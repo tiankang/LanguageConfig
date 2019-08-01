@@ -62,14 +62,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\LanguageConfig.cs" />
     <Compile Include="Assets\Scripts\LanguageText.cs" />
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/U3DProject/LanguageConfig/LanguageConfig/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
+    <None Include="Assets\ThirdPlugins\EPPlus\readme.txt" />
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>E:/U3DProject/LanguageConfig/LanguageConfig/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/U3DProject/LanguageConfig/LanguageConfig/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>E:/U3DProject/LanguageConfig/LanguageConfig/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
@@ -274,6 +269,9 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Program Files/Unity2018.3.8/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>E:/U3DProject/LanguageConfig/LanguageConfig/Assets/ThirdPlugins/EPPlus/EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>E:/U3DProject/LanguageConfig/LanguageConfig/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
