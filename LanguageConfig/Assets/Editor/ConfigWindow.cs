@@ -1,4 +1,6 @@
 ﻿
+using OfficeOpenXml;
+
 namespace ConfigManagerEditor
 {
     using UnityEngine;
@@ -8,8 +10,6 @@ namespace ConfigManagerEditor
     using System.Collections.Generic;
     using System.Text;
     using System.Text.RegularExpressions;
-    using OfficeOpenXml;
-
     /// <summary>
     /// ConfigManager窗口
     /// </summary>
@@ -53,7 +53,6 @@ namespace ConfigManagerEditor
         {
             //Base Settings
             GUILayout.Label("Base Settings", EditorStyles.boldLabel);
-
             cache.sourceFolder = EditorGUILayout.TextField("Source Folder", cache.sourceFolder);
             cache.configOutputFolder = EditorGUILayout.TextField("Config Output", cache.configOutputFolder);
             cache.assetOutputFolder = EditorGUILayout.TextField("Asset Output", cache.assetOutputFolder);
