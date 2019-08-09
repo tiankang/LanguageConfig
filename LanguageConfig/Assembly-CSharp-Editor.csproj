@@ -66,6 +66,8 @@
     <Compile Include="Assets\Editor\ConfigWindow.cs" />
     <Compile Include="Assets\Editor\Generator\SheetGenerator.cs" />
     <Compile Include="Assets\Editor\Generator\StructGenerator.cs" />
+    <Compile Include="Assets\Editor\LanguageConfigEdit\LanguageConfigEdit.cs" />
+    <Compile Include="Assets\Editor\LanguageConfigEdit\LanguageTextEditor.cs" />
     <Compile Include="Assets\Editor\Parser\JSONParser.cs" />
     <Compile Include="Assets\Editor\Parser\SheetParser.cs" />
     <Compile Include="Assets\Editor\Parser\XmlParser.cs" />

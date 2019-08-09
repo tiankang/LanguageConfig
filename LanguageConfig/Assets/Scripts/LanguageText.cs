@@ -9,5 +9,4 @@ public class LanguageText : Text
     ///对应表里的ID
     /// </summary>
     public uint mLanguageId;
-   
 }
