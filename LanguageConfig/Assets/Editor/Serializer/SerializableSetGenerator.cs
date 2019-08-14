@@ -52,5 +52,11 @@ public class SerializableSet : UnityEngine.ScriptableObject
 
             ConfigTools.WriteFile(outputPath, content);
         }
+
+
+        public static void GenerateExcel()
+        {
+
+        }
     }
 }

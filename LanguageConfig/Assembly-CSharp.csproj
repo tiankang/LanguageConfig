@@ -60,6 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Output\LanguageConfigSheet.cs" />
+    <Compile Include="Assets\Output\Serializer\Deserializer.cs" />
+    <Compile Include="Assets\Output\Serializer\SerializableSet.cs" />
+    <Compile Include="Assets\Output\StructObjects.cs" />
+    <Compile Include="Assets\Scripts\GameApp.cs" />
     <Compile Include="Assets\Scripts\LanguageConfig.cs" />
     <Compile Include="Assets\Scripts\LanguageText.cs" />
     <Reference Include="Unity.PackageManagerUI.Editor">

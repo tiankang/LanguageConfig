@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class LanguageConfig
 {
-    public static string mConfigFile;
+    public static string mConfigFile = "Config";
 }

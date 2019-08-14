@@ -355,7 +355,22 @@ namespace GameEdit
         [MenuItem("Tools/…˙≥…”Ô—‘≈‰÷√")]
         public static void WriteLanguageConfigToExcel()
         {
+            GameObject[] gameObjects = Resources.LoadAll<GameObject>(uiPrefabPath);
 
+            for (int i = 0; i < gameObjects.Length; i++)
+            {
+                LanguageText[] languageTexts = gameObjects[i].transform.GetComponentsInChildren<LanguageText>();
+                for (int j = 0; j < languageTexts.Length; j++)
+                {
+                    LanguageText languageText = languageTexts[i];
+                    if (languageText.mLanguageId == 0)
+                    {
+                        continue;
+                    }
+
+                    
+                }
+            }
         }
     }
 }

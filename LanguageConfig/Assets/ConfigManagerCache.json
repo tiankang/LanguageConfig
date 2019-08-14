@@ -1,0 +1,8 @@
+﻿{
+    "sourceFolder": "ExcelConfig",
+    "configOutputFolder": "Assets/Output",
+    "assetOutputFolder": "Assets/Resources/Config",
+    "txtEnabled": false,
+    "csvEnabled": false,
+    "xlsxEnabled": true
+}
