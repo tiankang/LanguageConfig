@@ -92,6 +92,10 @@ namespace ConfigManagerEditor
                 Output();
             }
 
+            if (GUILayout.Button("写入Language表"))
+            {
+                WriteLanguageConfigToExcel();
+            }
 
             //缓存设置
             if (GUI.changed)
@@ -122,6 +126,57 @@ namespace ConfigManagerEditor
             }
             
             AssetDatabase.Refresh();
+        }
+
+
+        private const string uiPrefabPath = "UIPrefab";
+        public static void WriteLanguageConfigToExcel()
+        {
+            //先清除之前的
+            LanguageConfigSheet.GetDictionary().Clear();
+            //加载所有数据 然后从内存写到excel
+            SerializableSet configSet = Resources.Load<SerializableSet>("Config/SerializableSet");
+            Deserializer.Deserialize(configSet);
+            Resources.UnloadUnusedAssets();
+
+            Dictionary<uint, LanguageConfigSheet> sheets = LanguageConfigSheet.GetDictionary();
+
+            //找到所有的LanguageText
+            GameObject[] gameObjects = Resources.LoadAll<GameObject>(uiPrefabPath);
+            for (int i = 0; i < gameObjects.Length; i++)
+            {
+                LanguageText[] languageTexts = gameObjects[i].transform.GetComponentsInChildren<LanguageText>();
+                for (int j = 0; j < languageTexts.Length; j++)
+                {
+                    LanguageText languageText = languageTexts[j];
+                    if (languageText.mLanguageId == 0)
+                    {
+                        continue;
+                    }
+
+                    LanguageConfigSheet sheet;
+                    if (sheets.TryGetValue(languageText.mLanguageId, out sheet))
+                    {
+                        sheet.LanguageID = languageText.mLanguageId;
+                        sheet.Text = languageText.text;
+                        sheets[languageText.mLanguageId] = sheet;
+                    }
+                    else
+                    {
+                        sheet = new LanguageConfigSheet();
+                        sheet.LanguageID = languageText.mLanguageId;
+                        sheet.Text = languageText.text;
+                        sheets.Add(sheet.LanguageID,sheet);
+                    }
+                }
+            }
+
+
+        }
+
+        private void WriteExcel()
+        {
+
         }
 
         /// <summary>
@@ -241,7 +296,6 @@ namespace ConfigManagerEditor
             ConfigTools.WriteFile(cacheDiskPath, json);
         }
 
-
         /// <summary>
         /// 获取所有源
         /// </summary>
@@ -292,7 +346,7 @@ namespace ConfigManagerEditor
 
                     ConfigTools.DetectTextEncoding(bytes, out content);//转换不同的编码格式
 
-                    if (string.IsNullOrEmpty(content))
+                    if (String.IsNullOrEmpty(content))
                     {
                         Debug.LogWarning(file.Name + "内容为空！");
                         continue;
@@ -310,7 +364,7 @@ namespace ConfigManagerEditor
                         }
                         catch(Exception e)
                         {
-                            UnityEngine.Debug.LogError(file.Name + "解析失败！请检查格式是否正确，如果格式正确请联系作者：https://github.com/RickJiangShu/ConfigManager/issues" + "\n" + e);
+                            Debug.LogError(file.Name + "解析失败！请检查格式是否正确，如果格式正确请联系作者：https://github.com/RickJiangShu/ConfigManager/issues" + "\n" + e);
                         }
                         break;
                     case OriginalType.Json:
@@ -321,7 +375,7 @@ namespace ConfigManagerEditor
                         }
                         catch (Exception e)
                         {
-                            UnityEngine.Debug.LogError(file.Name + "解析失败！请检查格式是否正确，如果格式正确请联系作者：https://github.com/RickJiangShu/ConfigManager/issues" + "\n" + e);
+                            Debug.LogError(file.Name + "解析失败！请检查格式是否正确，如果格式正确请联系作者：https://github.com/RickJiangShu/ConfigManager/issues" + "\n" + e);
                         }
                         break;
                     case OriginalType.Xml:
@@ -332,7 +386,7 @@ namespace ConfigManagerEditor
                         }
                         catch (Exception e)
                         {
-                            UnityEngine.Debug.LogError(file.Name + "解析失败！请检查格式是否正确，如果格式正确请联系作者：https://github.com/RickJiangShu/ConfigManager/issues" + "\n" + e);
+                            Debug.LogError(file.Name + "解析失败！请检查格式是否正确，如果格式正确请联系作者：https://github.com/RickJiangShu/ConfigManager/issues" + "\n" + e);
                         }
                         break;
                     case OriginalType.Xlsx:
@@ -343,7 +397,7 @@ namespace ConfigManagerEditor
                         }
                         catch (Exception e)
                         {
-                            UnityEngine.Debug.LogError(file.Name + "解析失败！请检查格式是否正确，如果格式正确请联系作者：https://github.com/RickJiangShu/ConfigManager/issues" + "\n" + e);
+                            Debug.LogError(file.Name + "解析失败！请检查格式是否正确，如果格式正确请联系作者：https://github.com/RickJiangShu/ConfigManager/issues" + "\n" + e);
                         }
                         break;
                 }

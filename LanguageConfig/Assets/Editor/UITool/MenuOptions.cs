@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -345,32 +346,6 @@ namespace GameEdit
                 return false;
 
             return true;
-        }
-
-
-        private static string uiPrefabPath = "UI/Prefab";
-        /// <summary>
-        /// 生成Text.text 到excel
-        /// </summary>
-        [MenuItem("Tools/生成语言配置")]
-        public static void WriteLanguageConfigToExcel()
-        {
-            GameObject[] gameObjects = Resources.LoadAll<GameObject>(uiPrefabPath);
-
-            for (int i = 0; i < gameObjects.Length; i++)
-            {
-                LanguageText[] languageTexts = gameObjects[i].transform.GetComponentsInChildren<LanguageText>();
-                for (int j = 0; j < languageTexts.Length; j++)
-                {
-                    LanguageText languageText = languageTexts[i];
-                    if (languageText.mLanguageId == 0)
-                    {
-                        continue;
-                    }
-
-                    
-                }
-            }
         }
     }
 }

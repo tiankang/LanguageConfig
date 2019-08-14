@@ -23,6 +23,7 @@ namespace TKFrameWork
 
             configSet = Resources.Load<SerializableSet>("Config/SerializableSet");
             Deserializer.Deserialize(configSet);
+            Resources.UnloadUnusedAssets();
 
             Debug.Log(LanguageConfigSheet.Get(1).Text);
 

@@ -8,7 +8,6 @@ namespace ConfigManagerEditor
     /// </summary>
     public class SheetParser
     {
-
         /// <summary>
         /// Excel
         /// </summary>
