@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace TKFrameWork
@@ -25,7 +23,7 @@ namespace TKFrameWork
             Deserializer.Deserialize(configSet);
             Resources.UnloadUnusedAssets();
 
-            Debug.Log(LanguageConfigSheet.Get(1).Text);
+            Debug.Log(LanguageConfigSheet.Get(20).Text);
 
             GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("UIPrefab/UIPanel"));
             go.transform.SetParent(mCanvas.transform,false);

@@ -1,5 +1,8 @@
 ﻿
+using System.Linq;
 using OfficeOpenXml;
+using System.Collections.Generic;
+using Boo.Lang;
 
 namespace ConfigManagerEditor
 {
@@ -130,7 +133,7 @@ namespace ConfigManagerEditor
 
 
         private const string uiPrefabPath = "UIPrefab";
-        public static void WriteLanguageConfigToExcel()
+        public void WriteLanguageConfigToExcel()
         {
             //先清除之前的
             LanguageConfigSheet.GetDictionary().Clear();
@@ -171,12 +174,61 @@ namespace ConfigManagerEditor
                 }
             }
 
-
+            WriteExcel(sheets);
         }
 
-        private void WriteExcel()
+        private void WriteExcel(Dictionary<uint, LanguageConfigSheet> sheets)
         {
+            Dictionary<uint, LanguageConfigSheet> dic1Asc =
+                sheets.OrderBy(o => o.Key).ToDictionary(o => o.Key, p => p.Value);
 
+            //检出输出目录
+            if (!Directory.Exists(cache.configOutputFolder))
+            {
+                Directory.CreateDirectory(cache.configOutputFolder);
+            }
+
+            if (!Directory.Exists(cache.serializerOutputFolder))
+            {
+                Directory.CreateDirectory(cache.serializerOutputFolder);
+            }
+
+            FileInfo file = new FileInfo(cache.sourceFolder + "/LanguageConfig.xlsx");
+
+            ExcelPackage package = null;
+            ExcelWorksheet excelData = null;
+
+            if (!file.Exists)
+            {
+                package = new ExcelPackage();
+                excelData = package.Workbook.Worksheets.Add("Language");
+                package.SaveAs(file);
+            }
+            else
+            {
+                package = new ExcelPackage(file);
+                excelData = package.Workbook.Worksheets[1];
+            }
+
+            excelData.Cells[1, 1].Value = "语言ID";
+            excelData.Cells[1, 2].Value = "文字";
+            excelData.Cells[2, 1].Value = "uint";
+            excelData.Cells[2, 2].Value = "string";
+            excelData.Cells[3, 1].Value = "LanguageID";
+            excelData.Cells[3, 2].Value = "Text";
+
+            int row = 4;
+            List<uint> sheetKeyList = new List<uint>(dic1Asc.Keys);
+            for (int i = 0; i < sheetKeyList.Count; i++)
+            {
+                LanguageConfigSheet sheet = dic1Asc[sheetKeyList[i]];
+                excelData.Cells[row, 1].Value = sheet.LanguageID;
+                excelData.Cells[row, 2].Value = sheet.Text;
+                row++;
+            }
+
+            package.Save();
+            Debug.Log("导出language表成功");
         }
 
         /// <summary>
