@@ -177,6 +177,22 @@ namespace ConfigManagerEditor
             WriteExcel(sheets);
         }
 
+        private void WriteConfigText(ExcelWorksheet excelData)
+        {
+            if(excelData == null)
+            {
+                Debug.LogError("excelData is null");
+                return;
+            }
+
+            excelData.Cells[1, 1].Value = "语言ID";
+            excelData.Cells[1, 2].Value = "文字";
+            excelData.Cells[2, 1].Value = "uint";
+            excelData.Cells[2, 2].Value = "string";
+            excelData.Cells[3, 1].Value = "LanguageID";
+            excelData.Cells[3, 2].Value = "Text";
+        }
+
         private void WriteExcel(Dictionary<uint, LanguageConfigSheet> sheets)
         {
             Dictionary<uint, LanguageConfigSheet> dic1Asc =
@@ -210,12 +226,7 @@ namespace ConfigManagerEditor
                 excelData = package.Workbook.Worksheets[1];
             }
 
-            excelData.Cells[1, 1].Value = "语言ID";
-            excelData.Cells[1, 2].Value = "文字";
-            excelData.Cells[2, 1].Value = "uint";
-            excelData.Cells[2, 2].Value = "string";
-            excelData.Cells[3, 1].Value = "LanguageID";
-            excelData.Cells[3, 2].Value = "Text";
+            WriteConfigText(excelData);
 
             int row = 4;
             List<uint> sheetKeyList = new List<uint>(dic1Asc.Keys);

@@ -65,7 +65,6 @@
     <Compile Include="Assets\Output\Serializer\SerializableSet.cs" />
     <Compile Include="Assets\Output\StructObjects.cs" />
     <Compile Include="Assets\Scripts\GameApp.cs" />
-    <Compile Include="Assets\Scripts\LanguageConfig.cs" />
     <Compile Include="Assets\Scripts\LanguageText.cs" />
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>E:/UnityProject/LanguageConfig/LanguageConfig/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>

@@ -15,3 +15,17 @@ MonoBehaviour:
   LanguageConfigs:
   - LanguageID: 1
     Text: "\u554A\u554A\u554A"
+  - LanguageID: 2
+    Text: "\u563B\u563B\u563B\u563B\u563B\u563B\u563B\u563B"
+  - LanguageID: 3
+    Text: "\u563B\u563B\u563B\u563B\u563B\u563B\u563B\u563B"
+  - LanguageID: 4
+    Text: "\u563B\u563B\u563B\u563B\u563B\u563B\u563B\u563B"
+  - LanguageID: 7
+    Text: "\u563B\u563B\u563B\u563B\u563B\u563B\u563B\u563B"
+  - LanguageID: 9
+    Text: "\u563B\u563B\u563B\u563B\u563B\u563B\u563B\u563B"
+  - LanguageID: 11
+    Text: "\u563B\u563B\u563B\u563B\u563B\u563B\u563B\u563B"
+  - LanguageID: 20
+    Text: "\u554A\u554A\u554A"
