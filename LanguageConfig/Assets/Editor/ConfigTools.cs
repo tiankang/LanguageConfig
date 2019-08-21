@@ -280,30 +280,39 @@ namespace ConfigManagerEditor
         private static object SourceValue2BaseObject(string sourceBaseType,string sourceValue)
         {
             string csharpType = SourceBaseType2CSharpBaseType(sourceBaseType);
+
+            string tempValue = sourceValue;
+
+            if (string.IsNullOrEmpty(tempValue))
+            {
+                tempValue = "0";
+            }
+
+
             switch (csharpType)
             {
                 case "bool":
                     return sourceValue != "0" && sourceValue != "false" && sourceValue != "False" && sourceValue != "FALSE";
                 case "byte":
-                    return byte.Parse(sourceValue);
+                    return byte.Parse(tempValue);
                 case "ushort":
-                    return ushort.Parse(sourceValue);
+                    return ushort.Parse(tempValue);
                 case "uint":
-                    return uint.Parse(sourceValue);
+                    return uint.Parse(tempValue);
                 case "sbyte":
-                    return sbyte.Parse(sourceValue);
+                    return sbyte.Parse(tempValue);
                 case "short":
-                    return short.Parse(sourceValue);
+                    return short.Parse(tempValue);
                 case "int":
-                    return int.Parse(sourceValue);
+                    return int.Parse(tempValue);
                 case "long":
-                    return long.Parse(sourceValue);
+                    return long.Parse(tempValue);
                 case "ulong":
-                    return ulong.Parse(sourceValue);
+                    return ulong.Parse(tempValue);
                 case "float":
-                    return float.Parse(sourceValue);
+                    return float.Parse(tempValue);
                 case "double":
-                    return double.Parse(sourceValue);
+                    return double.Parse(tempValue);
                 case "string":
                     return sourceValue;
                 default:

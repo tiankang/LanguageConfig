@@ -16,7 +16,12 @@ public class LanguageText : Text
 
         if (mLanguageId != 0)
         {
-            text = LanguageConfigSheet.Get(mLanguageId).Text;
+            LanguageConfigSheet sheet = LanguageConfigSheet.Get(mLanguageId);
+
+            if (sheet != null)
+            {
+                text = sheet.Text;
+            }
         }
     }
 }

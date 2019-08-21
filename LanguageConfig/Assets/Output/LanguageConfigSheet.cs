@@ -23,7 +23,13 @@ public class LanguageConfigSheet
     /// <returns>LanguageConfigSheet的实例</returns>
     public static LanguageConfigSheet Get(uint LanguageID)
     {
-        return dictionary[LanguageID];
+        LanguageConfigSheet sheet;
+        if (dictionary.TryGetValue(LanguageID, out sheet))
+        {
+            return sheet;
+        }
+
+        return null;
     }
     
     /// <summary>

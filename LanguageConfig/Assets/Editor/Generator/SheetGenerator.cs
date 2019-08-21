@@ -26,7 +26,13 @@ public class /*ClassName*/
     /// <returns>/*ClassName*/的实例</returns>
     public static /*ClassName*/ Get(/*IDType*/ /*IDField*/)
     {
-        return dictionary[/*IDField*/];
+        /*ClassName*/ sheet;
+        if (dictionary.TryGetValue(LanguageID, out sheet))
+        {
+            return sheet;
+        }
+
+        return null;
     }
     
     /// <summary>
