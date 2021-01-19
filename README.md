@@ -1,5 +1,5 @@
 # LanguageConfig
-配置解析是用的另外一个开源代码 https://github.com/RickJiangShu/ConfigManager，
+配置解析是用的另外一个开源代码 https://github.com/RickJiangShu/ConfigManager
 之所以引用这套代码 我个人觉得比较简洁上手也容易。
 
 LanguageConfig只是为了让语言配置表更加方便灵活，这套思路实现基于UGUI，想要实现其他的ui也是非常容易的。只需要让LanguageText继承其他Text的基类
